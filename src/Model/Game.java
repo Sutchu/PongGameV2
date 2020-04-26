@@ -10,7 +10,7 @@ public class Game {
     private Ball ball;
     private ArrayList<Paddle> paddles;
 
-    Game() {
+    public Game() {
         ball = new Ball(290, 290);
         paddles = new ArrayList();
 

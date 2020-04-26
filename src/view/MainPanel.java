@@ -1,8 +1,8 @@
 package view;
 
 
+import Model.Object.Ball;
 import controller.Controller;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -29,7 +29,7 @@ public class MainPanel extends JPanel {
         g.setColor(Color.BLACK);
         Controller.getInstance()
                 .getPaddles()
-                .forEach(paddle -> g.fillRect(paddle.getX(), paddle.getY(), paddle.getWidth(). paddle.getHeight()));
+                .forEach(paddle -> g.fillRect(paddle.getX(), paddle.getY(), paddle.getWidth(), paddle.getHeight()));
     }
 
     private void drawBall(Graphics g) {

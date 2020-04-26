@@ -1,6 +1,11 @@
 package controller;
 
 
+import Model.Game;
+import Model.Object.Ball;
+import Model.Object.Paddle;
+import java.util.ArrayList;
+
 public class Controller {
     private static Controller instance;
 
@@ -11,8 +16,10 @@ public class Controller {
         return instance;
     }
 
+    private Game game;
+
     private Controller(){
-        Game game = new Game();
+        game = new Game();
     }
 
     public Ball getBall() {

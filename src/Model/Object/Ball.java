@@ -4,7 +4,7 @@ import Model.Vector2D;
 
 public class Ball extends GameObject {
 
-    private int Diameter;
+    private int Radius;
     private Vector2D velocity;
 
     public Ball(int x, int y) {
@@ -15,8 +15,9 @@ public class Ball extends GameObject {
         setX(x);
         setY(y);
 
-        Diameter = 20;
+        Radius = 10;
     }
 
-    public int getDiameter() { return Diameter; }
+
+    public int getRadius() { return Radius; }
 }
