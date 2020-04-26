@@ -2,7 +2,6 @@ package view;
 
 
 import controller.Controller;
-import model.Objects.GameObject;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,23 +20,26 @@ public class MainPanel extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        herSeyiCiz(g);
+        drawBall(g);
+        drawPaddles(g);
     }
 
 
-    private void herSeyiCiz(Graphics g) {
+    private void drawPaddles(Graphics g) {
+        g.setColor(Color.BLACK);
         Controller.getInstance()
-                .getObjects()
-                .forEach(object -> topuCiz(g, object));
-
-        g.setColor(Color.GRAY);
-        //Hovering ball
+                .getPaddles()
+                .forEach(paddle -> g.fillRect(paddle.getX(), paddle.getY(), paddle.getWidth(). paddle.getHeight()));
     }
 
-    private void topuCiz(Graphics g, GameObject object) {
-        g.fillOval(object.getPosition().getX(),
-                object.getPosition().getY(),
-                object.getRadius(),
-                object.getRadius());
+    private void drawBall(Graphics g) {
+        g.setColor(Color.BLUE);
+        Ball ball = Controller.getInstance().getBall();
+        g.fillOval(ball.getX(),
+                ball.getY(),
+                ball.getRadius(),
+                ball.getRadius());
     }
+
+
 }

@@ -30,7 +30,7 @@ public class MainFrame extends JFrame {
 
     private void startThread() {
         Timer timer = new Timer(10, e -> {
-            Controller.getInstance().updateAll();
+            Controller.getInstance().updateGame();
             repaint();
         });
 

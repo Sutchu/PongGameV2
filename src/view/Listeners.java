@@ -10,17 +10,19 @@ public class Listeners implements MouseMotionListener, MouseListener, KeyListene
 
 
     public void keyPressed(KeyEvent keyEvent) {
-
-    }
-
-    public void mousePressed(MouseEvent mouseEvent) {
-        if (mouseEvent.getButton() == MouseEvent.BUTTON1) {
-            Controller.getInstance().addBall(mouseEvent.getX(), mouseEvent.getY());
+        if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
+            Controller.getInstance().leftButtonPressed();
+        }
+        if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
+            Controller.getInstance().rightButtonPressed();
         }
     }
 
-    public void mouseMoved(MouseEvent mouseEvent) {
+    public void mousePressed(MouseEvent mouseEvent) {
+    }
 
+    public void mouseMoved(MouseEvent mouseEvent) {
+        //kendiPaddle'imi hareket ettiricem
     }
 
     public void mouseClicked(MouseEvent mouseEvent) {}

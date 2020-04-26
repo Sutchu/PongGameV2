@@ -1,13 +1,8 @@
 package controller;
 
-import model.ObjectHandler;
-import model.Objects.GameObject;
-
-import java.util.ArrayList;
 
 public class Controller {
     private static Controller instance;
-    private ObjectHandler objectHandler;
 
     public static Controller getInstance() {
         if (instance == null) {
@@ -17,18 +12,26 @@ public class Controller {
     }
 
     private Controller(){
-        objectHandler = new ObjectHandler();
+        Game game = new Game();
     }
 
-    public void addBall(int x, int y) {
-        objectHandler.addBall(x, y);
+    public Ball getBall() {
+        return game.getBall();
     }
 
-    public ArrayList<GameObject> getObjects() {
-        return objectHandler.getObjects();
+    public ArrayList<Paddle> getPaddles() {
+        return game.getPaddles();
     }
 
-    public void updateAll() {
-        objectHandler.updateAll();
+    public void updateGame() {
+        game.updateGame();
+    }
+
+    public void rightButtonPressed() {
+        game.rightButtonPressed();
+    }
+
+    public void leftButtonPressed() {
+        game.leftButtonPressed();
     }
 }
