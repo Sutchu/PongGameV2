@@ -37,8 +37,8 @@ public class MainPanel extends JPanel {
         Ball ball = Controller.getInstance().getBall();
         g.fillOval(ball.getX(),
                 ball.getY(),
-                ball.getRadius(),
-                ball.getRadius());
+                ball.getRadius()*2,
+                ball.getRadius()*2);
     }
 
 
