@@ -7,14 +7,17 @@ public class GameObject {
     //vector reference
     protected Vector2D position;
 
-    GameObject() {
+    GameObject(double x, double y) {
         position = new Vector2D();
+
+        setX(x);
+        setY(y);
     }
 
     public int getX() { return (int) position.getX(); }
     public int getY() { return (int) position.getY(); }
-    public void setX(int x) { position.setX(x); }
-    public void setY(int y) { position.setY(y); }
+    public void setX(double x) { position.setX(x); }
+    public void setY(double y) { position.setY(y); }
     public void add(Vector2D vector) { position.add(vector); }
 
 }
