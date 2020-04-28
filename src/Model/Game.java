@@ -15,7 +15,7 @@ public class Game {
         ball = new Ball(290, 290);
         paddles = new ArrayList();
 
-        paddles.add(new Paddle(255,595 ));  //bottom paddle degistirdim lol ali
+        paddles.add(new Paddle(255,595 ));  //bottom paddle degistirdim lol
         paddles.add(new Paddle(255, 0));    //top paddle
 
         collision = new Collision();
@@ -27,11 +27,15 @@ public class Game {
     }
 
     public void rightButtonPressed() {
-        paddles.get(0).moveRight();
+        paddles.get(0).setX(paddles.get(0).getX() + 5);
+        if((paddles.get(0).getX() + paddles.get(0).getWidth()) > 600)
+            paddles.get(0).setX(600 - paddles.get(0).getWidth());
     }
 
     public void leftButtonPressed() {
-        paddles.get(0).moveLeft();
+        paddles.get(0).setX(paddles.get(0).getX() - 5);
+        if(paddles.get(0).getX() < 0)
+            paddles.get(0).setX(0);
     }
 
     public Ball getBall() { return ball; }
