@@ -11,6 +11,17 @@ public class Paddle extends GameObject{
     }
 
 
+    public void moveRight() {
+        setX(getX() + 5);
+        if((getX() + width) > 600)
+            setX(600 - width);
+    }
+
+    public void moveLeft() {
+        setX(getX() + -5);
+        if(getX() < 0)
+            setX(0);
+    }
 
     public int getHeight() { return height; }
     public int getWidth() { return width; }
