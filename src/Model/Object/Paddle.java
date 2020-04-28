@@ -7,7 +7,7 @@ public class Paddle extends GameObject{
     public Paddle(double x, double y) {
         super(x, y);
 
-        height = 5; width = 30;
+        height = 5; width = 90;
     }
 
 

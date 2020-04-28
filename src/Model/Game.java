@@ -15,18 +15,32 @@ public class Game {
     public Game() {
         ball = new Ball(290, 290);
         paddles = new ArrayList();
+
+        paddles.add(new Paddle(255,595 ));  //bottom paddle
+        paddles.add(new Paddle(255, 0));    //top paddle
+
         collision = new Collision();
 
-        // creating paddles
-        paddles.add(new Paddle(285,595 ));  //bottom paddle
-        paddles.add(new Paddle(285, 0));    //top paddle
+        //------------Starting velocity of the ball------------//
+        ball.getVelocity().setY(2);
+        ball.getVelocity().setX(-1);
     }
 
     public void updateGame() {
+        ball.move();
         collision.checkCollision(ball, paddles);
     }
-    public void rightButtonPressed() {}
-    public void leftButtonPressed() {}
+
+    public void rightButtonPressed() {
+        paddles.get(0).setX(paddles.get(0).getX() + 5);
+        if((paddles.get(0).getX() + paddles.get(0).getWidth()) > 600)
+            paddles.get(0).setX(600 - paddles.get(0).getWidth());
+    }
+    public void leftButtonPressed() {
+        paddles.get(0).setX(paddles.get(0).getX() - 5);
+        if(paddles.get(0).getX() < 0)
+            paddles.get(0).setX(0);
+    }
 
     public Ball getBall() { return ball; }
     public ArrayList<Paddle> getPaddles() { return paddles; }
