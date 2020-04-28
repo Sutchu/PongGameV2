@@ -1,9 +1,6 @@
 package view;
 
-
-
 import controller.Controller;
-
 import java.awt.event.*;
 
 public class Listeners implements MouseMotionListener, MouseListener, KeyListener {
