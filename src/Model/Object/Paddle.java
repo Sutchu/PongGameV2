@@ -18,7 +18,7 @@ public class Paddle extends GameObject{
     }
 
     public void moveLeft() {
-        setX(getX() + -5);
+        setX(getX() - 5);
         if(getX() < 0)
             setX(0);
     }
