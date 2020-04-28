@@ -15,7 +15,7 @@ public class Game {
         ball = new Ball(290, 290);
         paddles = new ArrayList();
 
-        paddles.add(new Paddle(255,595 ));  //bottom paddle degistirdim lol
+        paddles.add(new Paddle(255,595 ));  //bottom paddle ben de random bir sey ekledim
         paddles.add(new Paddle(255, 0));    //top paddle
 
         collision = new Collision();
