@@ -12,12 +12,15 @@ public class Ball extends GameObject {
 
         velocity = new Vector2D();
 
+        //------Silinecek------//
+        velocity.setY(-2);
+        velocity.setX(4);
 
         Radius = 10;
     }
 
     // when this method called, it's velocity will be added to it's position. So it will move.
-    public void move() { add(velocity);}
+    public void update() { add(velocity);}
 
     public Vector2D getVelocity() { return velocity; }
     public int getRadius() { return Radius; }

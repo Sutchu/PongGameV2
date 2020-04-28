@@ -3,7 +3,6 @@ package Model;
 import Model.Object.Ball;
 import Model.Object.Paddle;
 import Model.Phsics.Collision;
-
 import java.util.ArrayList;
 
 public class Game {
@@ -20,14 +19,10 @@ public class Game {
         paddles.add(new Paddle(255, 0));    //top paddle
 
         collision = new Collision();
-
-        //------------Starting velocity of the ball------------//
-        ball.getVelocity().setY(2);
-        ball.getVelocity().setX(-1);
     }
 
     public void updateGame() {
-        ball.move();
+        ball.update();
         collision.checkCollision(ball, paddles);
     }
 
