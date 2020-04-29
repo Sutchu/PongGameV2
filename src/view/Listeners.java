@@ -8,10 +8,31 @@ public class Listeners implements MouseMotionListener, MouseListener, KeyListene
 
     public void keyPressed(KeyEvent keyEvent) {
         if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
-            Controller.getInstance().leftButtonPressed();
+            Controller.getInstance().leftButtonPressedPlayer0();
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
-            Controller.getInstance().rightButtonPressed();
+            Controller.getInstance().rightButtonPressedPlayer0();
+        }
+        if (keyEvent.getKeyCode() == KeyEvent.VK_A) {
+            Controller.getInstance().leftButtonPressedPlayer1();
+        }
+        if (keyEvent.getKeyCode() == KeyEvent.VK_D) {
+            Controller.getInstance().rightButtonPressedPlayer1();
+        }
+
+    }
+    public void keyReleased(KeyEvent keyEvent) {
+        if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
+            Controller.getInstance().stopPaddlePlayer0();
+        }
+        if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
+            Controller.getInstance().stopPaddlePlayer0();
+        }
+        if (keyEvent.getKeyCode() == KeyEvent.VK_A) {
+            Controller.getInstance().stopPaddlePlayer1();
+        }
+        if (keyEvent.getKeyCode() == KeyEvent.VK_D) {
+            Controller.getInstance().stopPaddlePlayer1();
         }
     }
 
@@ -23,7 +44,6 @@ public class Listeners implements MouseMotionListener, MouseListener, KeyListene
     }
 
     public void mouseClicked(MouseEvent mouseEvent) {}
-    public void keyReleased(KeyEvent keyEvent) {}
     public void keyTyped(KeyEvent keyEvent) {}
     public void mouseReleased(MouseEvent mouseEvent) {}
     public void mouseEntered(MouseEvent mouseEvent) {}

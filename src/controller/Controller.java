@@ -34,11 +34,20 @@ public class Controller {
         game.updateGame();
     }
 
-    public void rightButtonPressed() {
-        game.rightButtonPressed();
+    public void rightButtonPressedPlayer0() {
+        game.rightButtonPressedPlayer0();
     }
+    public void leftButtonPressedPlayer0() {
+        game.leftButtonPressedPlayer0();
+    }
+    public void stopPaddlePlayer0() { game.stopPaddlePlayer0(); }
 
-    public void leftButtonPressed() {
-        game.leftButtonPressed();
+    public void rightButtonPressedPlayer1() {
+        game.rightButtonPressedPlayer1();
     }
+    public void leftButtonPressedPlayer1() {
+        game.leftButtonPressedPlayer1();
+    }
+    public void stopPaddlePlayer1() { game.stopPaddlePlayer1(); }
+
 }

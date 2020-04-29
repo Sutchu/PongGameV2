@@ -23,16 +23,26 @@ public class Game {
 
     public void updateGame() {
         ball.update();
+        paddles.get(0).update();
+        paddles.get(1).update();
         collision.checkCollision(ball, paddles);
     }
 
-    public void rightButtonPressed() {
+    public void rightButtonPressedPlayer0() {
         paddles.get(0).moveRight();
     }
-
-    public void leftButtonPressed() {
+    public void leftButtonPressedPlayer0() {
         paddles.get(0).moveLeft();
     }
+    public void stopPaddlePlayer0() {paddles.get(0).stopPaddle();}
+
+    public void rightButtonPressedPlayer1() {
+        paddles.get(1).moveRight();
+    }
+    public void leftButtonPressedPlayer1() {
+        paddles.get(1).moveLeft();
+    }
+    public void stopPaddlePlayer1() { paddles.get(1).stopPaddle(); }
 
     public Ball getBall() { return ball; }
     public ArrayList<Paddle> getPaddles() { return paddles; }

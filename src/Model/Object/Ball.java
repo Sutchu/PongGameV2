@@ -13,8 +13,8 @@ public class Ball extends GameObject {
         velocity = new Vector2D();
 
         //------Silinecek------//
-        velocity.setY(-2);
-        velocity.setX(4);
+        velocity.setY(-1);
+        velocity.setX(0);
 
         Radius = 10;
     }
