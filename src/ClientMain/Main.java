@@ -26,7 +26,7 @@ public class Main {
         mainFrame.initProperties(); /**Adjusts frame's features and activates it*/
 
         try {
-            socket = new Socket("localhost",6666);  /**Connects client and server*/
+            socket = new Socket("35.234.124.95",6666);  /**Connects client and server*/
             inputStream = socket.getInputStream();              /**InputStream gets a serverInputStream, or something like that. Whatever.*/
             objectInputStream = new ObjectInputStream(inputStream); /**Initialization an input stream to be able to get the class sent from sever*/
 
