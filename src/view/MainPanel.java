@@ -1,14 +1,13 @@
 package view;
 
-
-import Model.Object.Ball;
-import controller.Controller;
+import Packets.SenderPacket;
 import javax.swing.*;
 import java.awt.*;
 
 public class MainPanel extends JPanel {
 
     private int frameSizeX, frameSizeY;
+    private SenderPacket senderPacket;
 
     public MainPanel() {
         super();
@@ -18,27 +17,29 @@ public class MainPanel extends JPanel {
         setLayout(null);
     }
 
+    public void updateSenderPacket(SenderPacket senderPacket) {
+        this.senderPacket = senderPacket;
+
+    }
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        if (senderPacket == null) return;
         drawBall(g);
-        drawPaddles(g);
+        //drawPaddles(g);
     }
 
 
     private void drawPaddles(Graphics g) {
         g.setColor(Color.BLACK);
-        Controller.getInstance()
-                .getPaddles()
-                .forEach(paddle -> g.fillRect(paddle.getX(), paddle.getY(), paddle.getWidth(), paddle.getHeight()));
     }
 
     private void drawBall(Graphics g) {
         g.setColor(Color.BLUE);
-        Ball ball = Controller.getInstance().getBall();
-        g.fillOval(ball.getX(),
-                ball.getY(),
-                ball.getRadius()*2,
-                ball.getRadius()*2);
+        g.fillOval(senderPacket.ballX,
+                senderPacket.ballY,
+                20,
+                20);
     }
 
 

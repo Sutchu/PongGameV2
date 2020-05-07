@@ -1,6 +1,5 @@
 package view;
 
-import controller.Controller;
 import java.awt.event.*;
 
 public class Listeners implements MouseMotionListener, MouseListener, KeyListener {
@@ -8,10 +7,10 @@ public class Listeners implements MouseMotionListener, MouseListener, KeyListene
 
     public void keyPressed(KeyEvent keyEvent) {
         if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
-            Controller.getInstance().leftButtonPressed();
+            //Controller.getInstance().leftButtonPressed();
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
-            Controller.getInstance().rightButtonPressed();
+            //Controller.getInstance().rightButtonPressed();
         }
     }
 
