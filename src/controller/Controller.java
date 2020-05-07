@@ -30,8 +30,8 @@ public class Controller {
         return game.getPaddles();
     }
 
-    public void updateGame(double dt) {
-        game.updateGame(dt);
+    public void updateGame() {
+        game.updateGame();
     }
 
     public void rightButtonPressed() {
