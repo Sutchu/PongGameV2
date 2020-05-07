@@ -34,8 +34,6 @@ public class Main {
         System.out.println("Connected!");
         startThread();
 
-
-
     }
 
     private void startThread() {
