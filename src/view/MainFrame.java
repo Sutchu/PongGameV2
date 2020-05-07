@@ -23,7 +23,7 @@ public class MainFrame extends JFrame {
         addListeners();
     }
 
-    /**Adds listeners to frame*/
+    /**Adds listeners to frame */
     private void addListeners() {
         listeners = new Listeners();
         addMouseListener(listeners);
