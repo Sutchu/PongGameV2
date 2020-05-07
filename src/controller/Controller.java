@@ -30,24 +30,15 @@ public class Controller {
         return game.getPaddles();
     }
 
-    public void updateGame() {
-        game.updateGame();
+    public void updateGame(double dt) {
+        game.updateGame(dt);
     }
 
-    public void rightButtonPressedPlayer0() {
+    public void rightButtonPressed() {
         game.rightButtonPressedPlayer0();
     }
-    public void leftButtonPressedPlayer0() {
+
+    public void leftButtonPressed() {
         game.leftButtonPressedPlayer0();
     }
-    public void stopPaddlePlayer0() { game.stopPaddlePlayer0(); }
-
-    public void rightButtonPressedPlayer1() {
-        game.rightButtonPressedPlayer1();
-    }
-    public void leftButtonPressedPlayer1() {
-        game.leftButtonPressedPlayer1();
-    }
-    public void stopPaddlePlayer1() { game.stopPaddlePlayer1(); }
-
 }
