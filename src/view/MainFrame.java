@@ -1,9 +1,10 @@
 package view;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
-
+    private Listeners listeners;
 
     /**Activates the JFrame environment*/
     public MainFrame() {
@@ -19,14 +20,18 @@ public class MainFrame extends JFrame {
         setResizable(false);
         pack();
 
-        //addListeners();
+        addListeners();
     }
 
     /**Adds listeners to frame*/
     private void addListeners() {
-        Listeners listeners = new Listeners();
+        listeners = new Listeners();
         addMouseListener(listeners);
         addMouseMotionListener(listeners);
         addKeyListener(listeners);
+    }
+
+    public ArrayList<String> getPressedKeys() {
+        return listeners.getPressedkeys();
     }
 }

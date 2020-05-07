@@ -32,12 +32,14 @@ public class MainPanel extends JPanel {
         super.paintComponent(g);
         if (senderPacket == null) return;
         drawBall(g);
-        //drawPaddles(g);
+        drawPaddles(g);
     }
 
 
     private void drawPaddles(Graphics g) {
         g.setColor(Color.BLACK);
+        g.fillRect(senderPacket.paddle1X, senderPacket.paddle1Y, 90, 5);
+        g.fillRect(senderPacket.paddle2X, senderPacket.paddle2Y, 90, 5);
     }
 
     private void drawBall(Graphics g) {
@@ -47,6 +49,4 @@ public class MainPanel extends JPanel {
                 20,
                 20);
     }
-
-
 }

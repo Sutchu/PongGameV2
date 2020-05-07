@@ -1,16 +1,22 @@
 package view;
 
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class Listeners implements MouseMotionListener, MouseListener, KeyListener {
 
+    private ArrayList<String> pressedButtons;
+
+    public Listeners() {
+        pressedButtons = new ArrayList();
+    }
 
     public void keyPressed(KeyEvent keyEvent) {
         if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
-            //Controller.getInstance().leftButtonPressed();
+            pressedButtons.add("left");
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
-            //Controller.getInstance().rightButtonPressed();
+            pressedButtons.add("right");
         }
     }
 
@@ -28,4 +34,10 @@ public class Listeners implements MouseMotionListener, MouseListener, KeyListene
     public void mouseEntered(MouseEvent mouseEvent) {}
     public void mouseExited(MouseEvent mouseEvent) {}
     public void mouseDragged(MouseEvent mouseEvent) {}
+
+    public ArrayList<String> getPressedkeys() {
+        ArrayList<String> tmp = pressedButtons;
+        pressedButtons = new ArrayList();
+        return tmp;
+    }
 }

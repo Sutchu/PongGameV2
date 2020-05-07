@@ -5,9 +5,7 @@ import view.MainFrame;
 import view.MainPanel;
 
 import javax.swing.*;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.net.Socket;
 
 public class Main {
@@ -15,6 +13,8 @@ public class Main {
     private Socket socket;
     private InputStream inputStream;
     private ObjectInputStream objectInputStream;
+    private OutputStream outputStream;
+    private ObjectOutputStream objectOutputStream;
     private MainFrame mainFrame;
     private MainPanel mainPanel;
     private SenderPacket senderPacket;
@@ -29,6 +29,9 @@ public class Main {
             socket = new Socket("localhost",6666);  /**Connects client and server*/
             inputStream = socket.getInputStream();              /**InputStream gets a serverInputStream, or something like that. Whatever.*/
             objectInputStream = new ObjectInputStream(inputStream); /**Initialization an input stream to be able to get the class sent from sever*/
+
+            outputStream = socket.getOutputStream();
+            objectOutputStream = new ObjectOutputStream(outputStream);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -45,6 +48,8 @@ public class Main {
             try {
                 senderPacket = (SenderPacket) objectInputStream.readObject(); /**This class' SenderPacket is updated with server's.*/
                 mainPanel.updateSenderPacket(senderPacket); /**sends this class's SenderPacket to panel to update data*/
+
+                objectOutputStream.writeObject(mainFrame.getPressedKeys());
             } catch (Exception ex) {
                 System.out.println("issue with server");
             }
