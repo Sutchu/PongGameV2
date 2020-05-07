@@ -18,6 +18,8 @@ public class Main {
     private MainFrame mainFrame;
     private MainPanel mainPanel;
     private SenderPacket senderPacket;
+    private long before, after, deltaTime;
+    private double dt;
 
     public Main() {
         mainFrame = new MainFrame(); /**Initializes frame*/
@@ -44,6 +46,7 @@ public class Main {
      * The loop which gets data from server and updates panel
      */
     private void startThread() {
+        before = System.currentTimeMillis();//gets system time before nothing has been updated
         Timer timer = new Timer(10, e -> {
             try {
                 senderPacket = (SenderPacket) objectInputStream.readObject(); /**This class' SenderPacket is updated with server's.*/
@@ -55,6 +58,11 @@ public class Main {
             }
             mainFrame.repaint(); /**repaints panel's objects*/
 
+            //these are must be at the end of loop. Do not touch
+            after = System.currentTimeMillis();
+            before = System.currentTimeMillis();
+            deltaTime = after - before;
+            dt = (double) deltaTime/1000;
         });
 
         timer.start();
