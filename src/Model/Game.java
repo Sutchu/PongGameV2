@@ -11,6 +11,7 @@ public class Game {
     private ArrayList<GameObject> gameObjects; // [ball, paddleDown, paddleUp]
 
     public Game() {
+        gameObjects = new ArrayList();
         gameObjects.add(new Ball());    // ball
         gameObjects.add(new Paddle());  // paddleDown
         gameObjects.add(new Paddle());  // paddleUp
