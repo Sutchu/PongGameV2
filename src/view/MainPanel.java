@@ -1,13 +1,15 @@
 package view;
 
-import Packets.SenderPacket;
+import Controller.Controller;
+import Model.Object.GameObject;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class MainPanel extends JPanel {
 
     private int frameSizeX, frameSizeY;
-    private SenderPacket senderPacket;
 
     /**Prepares panel*/
     public MainPanel() {
@@ -18,34 +20,31 @@ public class MainPanel extends JPanel {
         setLayout(null);
     }
 
-    /**Replaces old SenderPacket class with new one*/
-    public void updateSenderPacket(SenderPacket senderPacket) {
-        this.senderPacket = senderPacket;
-    }
-
     /**
      * Draws every object.
-     * If class which is sent by server is a null value, then method will not draw anything
-     * or if there is an older sent class, method will draw same with previous.
      */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        if (senderPacket == null) return;
-        drawBall(g);
-        drawPaddles(g);
+
+        // Update game before drawing the next frame
+        Controller.getInstance().updateGame();
+
+        ArrayList<GameObject> objects = Controller.getInstance().getGameObjects();
+        drawBall(g, objects.get(0));
+        drawPaddle(g, objects.get(1));
+        drawPaddle(g, objects.get(2));
     }
 
 
-    private void drawPaddles(Graphics g) {
+    private void drawPaddle(Graphics g, GameObject object) {
         g.setColor(Color.BLACK);
-        g.fillRect(senderPacket.paddle1X, senderPacket.paddle1Y, 90, 5);
-        g.fillRect(senderPacket.paddle2X, senderPacket.paddle2Y, 90, 5);
+        g.fillRect(object.getX(), object.getY(), 90, 5);
     }
 
-    private void drawBall(Graphics g) {
+    private void drawBall(Graphics g, GameObject object) {
         g.setColor(Color.BLUE);
-        g.fillOval(senderPacket.ballX,
-                senderPacket.ballY,
+        g.fillOval(object.getX(),
+                object.getY(),
                 20,
                 20);
     }

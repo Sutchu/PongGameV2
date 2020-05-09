@@ -9,10 +9,8 @@ public class MainFrame extends JFrame {
     /**Activates the JFrame environment*/
     public MainFrame() {
         super();
-    }
 
-    /**Adjusts the features of the frame*/
-    public void initProperties() {
+        add(new MainPanel());
         requestFocus(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
@@ -22,6 +20,7 @@ public class MainFrame extends JFrame {
 
         addListeners();
     }
+
 
     /**Adds listeners to frame */
     private void addListeners() {
