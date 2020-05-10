@@ -1,22 +1,37 @@
 package view;
 
+import Controller.Controller;
+
 import java.awt.event.*;
 import java.util.ArrayList;
 
 public class Listeners implements MouseMotionListener, MouseListener, KeyListener {
 
-    private ArrayList<String> pressedButtons;
+    private byte[] pressedButtons;
 
     public Listeners() {
-        pressedButtons = new ArrayList();
+        pressedButtons = new byte[2];
     }
 
     public void keyPressed(KeyEvent keyEvent) {
         if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
-            pressedButtons.add("left");
+            pressedButtons[0] = 1;
+            updateServer();
         }
         if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
-            pressedButtons.add("right");
+            pressedButtons[1] = 1;
+            updateServer();
+        }
+    }
+
+    public void keyReleased(KeyEvent keyEvent) {
+        if (keyEvent.getKeyCode() == KeyEvent.VK_LEFT) {
+            pressedButtons[0] = 0;
+            updateServer();
+        }
+        if (keyEvent.getKeyCode() == KeyEvent.VK_RIGHT) {
+            pressedButtons[1] = 0;
+            updateServer();
         }
     }
 
@@ -28,16 +43,14 @@ public class Listeners implements MouseMotionListener, MouseListener, KeyListene
     }
 
     public void mouseClicked(MouseEvent mouseEvent) {}
-    public void keyReleased(KeyEvent keyEvent) {}
     public void keyTyped(KeyEvent keyEvent) {}
     public void mouseReleased(MouseEvent mouseEvent) {}
     public void mouseEntered(MouseEvent mouseEvent) {}
     public void mouseExited(MouseEvent mouseEvent) {}
     public void mouseDragged(MouseEvent mouseEvent) {}
 
-    public ArrayList<String> getPressedkeys() {
-        ArrayList<String> tmp = pressedButtons;
-        pressedButtons = new ArrayList();
-        return tmp;
+
+    private void updateServer() {
+        Controller.getInstance().updateServer(pressedButtons);
     }
 }

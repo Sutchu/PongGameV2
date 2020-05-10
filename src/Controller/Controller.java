@@ -1,5 +1,6 @@
 package Controller;
 
+import ClientMain.Main;
 import Model.Game;
 import Model.Object.GameObject;
 import Model.Vector2D;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 public class Controller {
     private static Controller instance;
     private Game game;
+    private Main main;
 
     public static Controller getInstance() {
         if (instance == null) {
@@ -18,6 +20,10 @@ public class Controller {
 
     private Controller() {
         game = new Game();
+    }
+
+    public void setMain(Main main) {
+        this.main = main;
     }
 
     public ArrayList<GameObject> getGameObjects() {
@@ -34,5 +40,9 @@ public class Controller {
 
     public void updateGame() {
         game.updateGame();
+    }
+
+    public void updateServer(byte[] pressedKeys) {
+        main.updateServer(pressedKeys);
     }
 }

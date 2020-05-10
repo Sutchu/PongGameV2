@@ -27,7 +27,7 @@ public class Main {
 
     private void connectToServer() {
         try {
-            socket = new Socket("35.234.124.95",6666);  /**Connects client and server*/
+            socket = new Socket("localhost",6666);  /**Connects client and server*/
             inputStream = socket.getInputStream();              /**InputStream gets a serverInputStream, or something like that. Whatever.*/
             objectInputStream = new ObjectInputStream(inputStream); /**Initialization an input stream to be able to get the class sent from sever*/
 
@@ -88,6 +88,14 @@ public class Main {
                         new Vector2D(data[7], 595),
                         new Vector2D(data[8], 0));
                 break;
+        }
+    }
+
+    public void updateServer(byte[] pressedKeys) {
+        try {
+            objectOutputStream.writeObject(pressedKeys);
+        } catch (Exception e) {
+            System.err.println("Couldn't send pressedKeys to server");
         }
     }
 
