@@ -71,7 +71,7 @@ public class Main {
         };
 
         Timer timer2 = new Timer("MyTimer");//create a new Timer
-        timer2.scheduleAtFixedRate(gameThread, 33, 10);
+        timer2.scheduleAtFixedRate(gameThread, 0, 33);
 
     }
 

@@ -16,8 +16,8 @@ public class MainPanel extends JPanel {
         super();
         frameSizeX = 600; frameSizeY = 600;
         setPreferredSize(new Dimension(frameSizeX, frameSizeY));
-        setVisible(true);
         setLayout(null);
+        setVisible(true);
     }
 
     /**
