@@ -1,7 +1,6 @@
 package view;
 
 import javax.swing.*;
-import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
     private Listeners listeners;
@@ -28,9 +27,5 @@ public class MainFrame extends JFrame {
         addMouseListener(listeners);
         addMouseMotionListener(listeners);
         addKeyListener(listeners);
-    }
-
-    public ArrayList<String> getPressedKeys() {
-        return listeners.getPressedkeys();
     }
 }

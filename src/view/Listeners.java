@@ -10,7 +10,7 @@ public class Listeners implements MouseMotionListener, MouseListener, KeyListene
     private byte[] pressedButtons;
 
     public Listeners() {
-        pressedButtons = new byte[2];
+        pressedButtons = new byte[] {0,0};
     }
 
     public void keyPressed(KeyEvent keyEvent) {
