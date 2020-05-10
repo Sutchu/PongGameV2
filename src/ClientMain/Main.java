@@ -3,9 +3,10 @@ package ClientMain;
 import Controller.Controller;
 import Model.Vector2D;
 import view.MainFrame;
-import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Main {
     private Socket socket;
@@ -15,9 +16,6 @@ public class Main {
     private ObjectOutputStream objectOutputStream;
     private MainFrame mainFrame;
     private int[] inputData;
-
-    Timer gameThread;
-    Timer timer;
 
     public Main() {
         mainFrame = new MainFrame(); /**Initializes frame*/
@@ -46,34 +44,48 @@ public class Main {
      * The loop which gets data from server and updates panel
      */
     private void initThreads() {
-        gameThread = new Timer(33, e -> {
-            mainFrame.repaint(); /**repaints panel's objects*/
-        });
 
-        timer = new Timer(10, e -> {
-            try {
-                inputData = (int[]) objectInputStream.readObject(); /**This class' SenderPacket is updated with server's.*/
-                decodeServerData(inputData);
+        TimerTask serverListenerThread = new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    inputData = (int[]) objectInputStream.readObject(); /**This class' SenderPacket is updated with server's.*/
+                    decodeServerData(inputData);
 
-                //objectOutputStream.writeObject(mainFrame.getPressedKeys());
-            } catch (Exception ex) {
-                System.out.println("issue with server");
+                    //objectOutputStream.writeObject(mainFrame.getPressedKeys());
+                } catch (Exception ex) {
+                    System.out.println("issue with server");
+                }
             }
-        });
+        };
+
+        Timer timer = new Timer("MyTimer");//create a new Timer
+        timer.scheduleAtFixedRate(serverListenerThread, 1, 10);
+
+
+        TimerTask gameThread = new TimerTask() {
+            @Override
+            public void run() {
+                mainFrame.repaint();
+            }
+        };
+
+        Timer timer2 = new Timer("MyTimer");//create a new Timer
+        timer2.scheduleAtFixedRate(gameThread, 33, 10);
 
     }
 
     private void decodeServerData(int[] data) {
         switch (data[0]) {
-            case 0:
+            case 1:
                 // Only update Velocities
                 Controller.getInstance().updateVelocities(new Vector2D(data[1], data[2]),
                         new Vector2D(data[3], 0),
                         new Vector2D(data[4], 0));
-            case 1:
+            case 0:
                 // Update Positions and Velocities
                 Controller.getInstance().updatePositions(new Vector2D(data[5], data[6]),
-                        new Vector2D(data[7], 0),
+                        new Vector2D(data[7], 595),
                         new Vector2D(data[8], 0));
                 break;
         }

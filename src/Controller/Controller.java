@@ -25,11 +25,11 @@ public class Controller {
     }
 
     public void updateVelocities(Vector2D ball, Vector2D paddleDown, Vector2D paddleUp) {
-        game.updatePositions(ball, paddleDown, paddleUp);
+        game.updateVelocities(ball, paddleDown, paddleUp);
     }
 
     public void updatePositions(Vector2D ball, Vector2D paddleDown, Vector2D paddleUp) {
-        game.updateVelocities(ball, paddleDown, paddleUp);
+        game.updatePositions(ball, paddleDown, paddleUp);
     }
 
     public void updateGame() {
