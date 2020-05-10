@@ -11,12 +11,12 @@ public class MainFrame extends JFrame {
         super();
 
         add(new MainPanel());
+        pack();
         requestFocus(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setVisible(true);
         setLocationRelativeTo(null);
         setResizable(false);
-        pack();
+        setVisible(true);
 
         addListeners();
     }
